@@ -41,3 +41,11 @@ add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/win64.asm
     COMMAND ${CMAKE_C_COMPILER} -nologo -EP -I ${CMAKE_BINARY_DIR} -I include -I src/x86 ${PROJECT_SOURCE_DIR}/src/x86/win64.S > ${CMAKE_BINARY_DIR}/win64.asm
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
 )
+
+install(TARGETS ffi
+    ARCHIVE DESTINATION lib
+)
+install(FILES
+    src/x86/ffitarget.h ${CMAKE_BINARY_DIR}/ffi.h ${CMAKE_BINARY_DIR}/fficonfig.h
+    DESTINATION include
+)
